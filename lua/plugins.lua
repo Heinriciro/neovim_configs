@@ -4,6 +4,50 @@ packer.startup({
     -- Packer 可以管理自己本身
     use 'wbthomason/packer.nvim'
     -- 你的插件列表...
+
+    use {
+      "loctvl842/monokai-pro.nvim",
+      config = function()
+        require("plugin_configs.monokai")
+      end,
+    }
+
+    use {
+      "kyazdani42/nvim-tree.lua",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("plugin_configs.nvim-tree")
+      end,
+    }
+
+    use {
+      "akinsho/bufferline.nvim",
+      tag = "*",
+      requires = {
+        'nvim-tree/nvim-web-devicons',
+        "moll/vim-bbye",
+      },
+      config = function()
+        require("plugin_configs.bufferline")
+      end,
+    }
+
+    use { "nvim-lualine/lualine.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("plugin_configs.nvim-lualine")
+      end,
+    }
+
+    use "arkav/lualine-lsp-progress"
+
+    -- telescope （新增）
+    use { 'nvim-telescope/telescope.nvim',
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("plugin_configs.telescope")
+      end,
+    }
   end,
   config = {
     -- 并发数限制

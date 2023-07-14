@@ -1,4 +1,5 @@
 -- basic settings
-require('basic')
-require('keybindings')
-require('plugins')
+require('lua.basic')
+require('lua.keybindings')
+require('lua.plugins')
+require('lua.colorscheme')
