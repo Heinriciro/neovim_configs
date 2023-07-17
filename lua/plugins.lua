@@ -32,7 +32,8 @@ packer.startup({
       end,
     }
 
-    use { "nvim-lualine/lualine.nvim",
+    use { 
+      "nvim-lualine/lualine.nvim",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("plugin_configs.nvim-lualine")
@@ -42,10 +43,41 @@ packer.startup({
     use "arkav/lualine-lsp-progress"
 
     -- telescope （新增）
-    use { 'nvim-telescope/telescope.nvim',
+    use { 
+      'nvim-telescope/telescope.nvim',
       requires = "nvim-lua/plenary.nvim",
       config = function()
         require("plugin_configs.telescope")
+      end,
+    }
+
+    use { 
+      'nvim-telescope/telescope-fzf-native.nvim',
+      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    }
+
+    -- dashboard-nvim (新增)
+    use {
+      "glepnir/dashboard-nvim",
+      requires = "nvim-tree/nvim-web-devicons",
+      config = function()
+        require("plugin_configs.dashboard")
+      end,
+    }
+
+    use {
+      "ahmedkhalf/project.nvim",
+      config = function()
+        require("plugin_configs.project")
+      end,
+    }
+
+    -- nvim-tree-sitter
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      config = function()
+        require("plugin_configs.tree-sitter")
       end,
     }
   end,
