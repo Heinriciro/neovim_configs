@@ -32,7 +32,7 @@ packer.startup({
       end,
     }
 
-    use { 
+    use {
       "nvim-lualine/lualine.nvim",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
@@ -43,7 +43,7 @@ packer.startup({
     use "arkav/lualine-lsp-progress"
 
     -- telescope （新增）
-    use { 
+    use {
       'nvim-telescope/telescope.nvim',
       requires = "nvim-lua/plenary.nvim",
       config = function()
@@ -51,7 +51,7 @@ packer.startup({
       end,
     }
 
-    use { 
+    use {
       'nvim-telescope/telescope-fzf-native.nvim',
       run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     }
@@ -80,6 +80,37 @@ packer.startup({
         require("plugin_configs.tree-sitter")
       end,
     }
+
+    -- Mason - Package manager for LSP, DSP, Linter and Formatter
+    use {
+      "williamboman/mason.nvim",
+      run = ":MasonUpdate",
+    }
+
+    --------------------- LSP --------------------
+    -- Lspconfig
+    use "williamboman/mason-lspconfig.nvim"
+    use "neovim/nvim-lspconfig"
+
+    -- Lua Enhancement
+    use("folke/neodev.nvim")
+
+    --------------------- CMP --------------------
+    -- 补全引擎
+    use("hrsh7th/nvim-cmp")
+    -- snippet 引擎
+    use "hrsh7th/vim-vsnip"
+    -- 补全源
+    use("hrsh7th/cmp-vsnip")
+    use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
+    use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
+    use("hrsh7th/cmp-path") -- { name = 'path' }
+    use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
+    use("hrsh7th/cmp-nvim-lsp-signature-help") -- { name = 'nvim_lsp_signature_help' }
+
+    -- 常见编程语言代码段
+    use "rafamadriz/friendly-snippets"
+
   end,
   config = {
     -- 并发数限制
