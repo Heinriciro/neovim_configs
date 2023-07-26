@@ -81,6 +81,15 @@ packer.startup({
       end,
     }
 
+    -- indent-blankline
+    use {
+      "lukas-reineke/indent-blankline.nvim",
+      config = function ()
+        require("plugin_configs.indent-blankline")
+      end
+    }
+
+
     -- Mason - Package manager for LSP, DSP, Linter and Formatter
     use {
       "williamboman/mason.nvim",
@@ -91,6 +100,11 @@ packer.startup({
     -- Lspconfig
     use "williamboman/mason-lspconfig.nvim"
     use "neovim/nvim-lspconfig"
+
+    -- ui 
+    use "onsails/lspkind-nvim"
+
+    use "tami5/lspsaga.nvim"
 
     -- Lua Enhancement
     use("folke/neodev.nvim")
@@ -110,6 +124,23 @@ packer.startup({
 
     -- 常见编程语言代码段
     use "rafamadriz/friendly-snippets"
+
+    ------------------ Formatter -----------------
+    -- 代码格式化 (新增)
+    --use {
+    --  "mhartington/formatter.nvim",
+    --  config = function ()
+    --    require("lua.formatter.formatter")
+    --  end
+    --}
+
+    use {
+      "jose-elias-alvarez/null-ls.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function ()
+        require("lua.formatter.null-ls")
+      end
+    }
 
   end,
   config = {
