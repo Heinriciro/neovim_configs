@@ -180,6 +180,8 @@ packer.startup({
 				require("lua.plugin_configs.gitsigns")
 			end,
 		})
+
+                use("github/copilot.vim")
 	end,
 	config = {
 		-- 并发数限制
